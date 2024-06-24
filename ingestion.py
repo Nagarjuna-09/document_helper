@@ -13,7 +13,6 @@ from langchain_pinecone import PineconeVectorStore
 
 INDEX_NAME = "langchain-doc-index"
 
-embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
 
 # **** load documents ***********
 def ingest_docs():
@@ -63,7 +62,7 @@ raw_docs = ingest_docs()
 chunks_of_documents = text_splitter(raw_docs)
 
 # Converting each chunk into embedding using openai embedding and laoding them into Pinecone
-embedding_to_use = OpenAIEmbeddings(model="text-embedding-3-small")
+embedding_to_use = OpenAIEmbeddings()
 
 # loading into pinecone
 load_into_pinecone(chunks_of_documents, embedding_to_use)
